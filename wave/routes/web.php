@@ -2,6 +2,10 @@
 
 Route::impersonate();
 
+Route::get('/phpinfo', function() {
+    return phpinfo();
+});
+
 Route::get('/', '\Wave\Http\Controllers\HomeController@index')->name('wave.home');
 Route::get('@{username}', '\Wave\Http\Controllers\ProfileController@index')->name('wave.profile');
 
