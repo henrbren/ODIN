@@ -37,6 +37,15 @@ Route::group(['middleware' => 'wave'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function(){
+
+	/***** Pricing Page *****/
+    Route::view('animate', 'theme::animate.index')->name('wave.animate');
+
+
+    Route::get('projects', '\Wave\Http\Controllers\ProjectsController@index')->name('wave.projects');
+    Route::get('projects/{category}', '\Wave\Http\Controllers\ProjectsController@category')->name('wave.projects.category');
+ 
+
 	Route::get('settings/{section?}', '\Wave\Http\Controllers\SettingsController@index')->name('wave.settings');
 
 	Route::post('settings/profile', '\Wave\Http\Controllers\SettingsController@profilePut')->name('wave.settings.profile.put');
