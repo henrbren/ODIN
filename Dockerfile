@@ -12,6 +12,8 @@ WORKDIR /var/www/site
 RUN composer install --no-ansi --no-suggest --no-scripts --prefer-dist --no-progress --no-interaction \
       --optimize-autoloader
 
+RUN composer require "ext-gd:*" --ignore-platform-reqs
+
 USER root
 
 RUN find /usr/share/GeoIP -not -user www-data -execdir chown "www-data:" {} \+ && \
