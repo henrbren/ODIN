@@ -13,6 +13,7 @@ RUN composer install --no-ansi --no-suggest --no-scripts --prefer-dist --no-prog
       --optimize-autoloader
 
 RUN composer require "ext-gd:*" --ignore-platform-reqs
+RUN composer require league/flysystem-aws-s3-v3
 
 USER root
 
