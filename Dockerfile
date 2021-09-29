@@ -1,18 +1,4 @@
-FROM php:5.6-apache
-
-RUN docker-php-ext-install mysql mysqli
-
-RUN apt-get update -y && apt-get install -y sendmail libpng-dev
-
-RUN apt-get update && \
-    apt-get install -y \
-        zlib1g-dev 
-
-RUN docker-php-ext-install mbstring
-
-RUN docker-php-ext-install zip
-
-RUN docker-php-ext-install gd
+FROM haakco/stage3-ubuntu-20.04-php8
 
 USER www-data
 
@@ -23,11 +9,16 @@ ADD --chown=www-data:www-data . /var/www/site
 
 WORKDIR /var/www/site
 
-RUN composer install --no-ansi --no-suggest --no-scripts --prefer-dist --no-progress --no-interaction \
-      --optimize-autoloader
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install gd
 
 RUN composer require "ext-gd:*" --ignore-platform-reqs
 RUN composer require league/flysystem-aws-s3-v3
+
+
+RUN composer install --no-ansi --no-suggest --no-scripts --prefer-dist --no-progress --no-interaction \
+      --optimize-autoloader
+
 
 USER root
 
