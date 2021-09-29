@@ -1,6 +1,4 @@
-@if(setting('digital-ocean.enabled'))
 
-@endif
 
 <div class="clearfix container-fluid row" style="position:relative; top:10px;">
     <div class="col-xs-12 col-md-6 col-lg-4">
