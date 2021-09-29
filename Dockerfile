@@ -1,4 +1,4 @@
-FROM haakco/stage3-ubuntu-20.04-php7.4
+FROM haakco/ubuntu2004-php74
 
 USER www-data
 
@@ -11,6 +11,8 @@ WORKDIR /var/www/site
 
 RUN composer install --no-ansi --no-suggest --no-scripts --prefer-dist --no-progress --no-interaction \
       --optimize-autoloader
+
+
 
 USER root
 
