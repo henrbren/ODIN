@@ -1,4 +1,4 @@
-FROM haakco/stage3-ubuntu-20.04-php8
+FROM haakco/stage3-ubuntu-20.04-php7.4
 
 USER www-data
 
@@ -9,16 +9,8 @@ ADD --chown=www-data:www-data . /var/www/site
 
 WORKDIR /var/www/site
 
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install gd
-
-RUN composer require "ext-gd:*" --ignore-platform-reqs
-RUN composer require league/flysystem-aws-s3-v3
-
-
 RUN composer install --no-ansi --no-suggest --no-scripts --prefer-dist --no-progress --no-interaction \
       --optimize-autoloader
-
 
 USER root
 
