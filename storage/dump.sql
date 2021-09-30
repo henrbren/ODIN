@@ -11,6 +11,7 @@
 # ************************************************************
 
 
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -22,6 +23,9 @@
 
 # Dump of table announcement_user
 # ------------------------------------------------------------
+
+SET @ORIG_SQL_REQUIRE_PRIMARY_KEY = @@SQL_REQUIRE_PRIMARY_KEY;
+SET SQL_REQUIRE_PRIMARY_KEY = 0;
 
 DROP TABLE IF EXISTS `announcement_user`;
 
